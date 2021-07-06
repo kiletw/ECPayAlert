@@ -9,7 +9,7 @@ const EXCHANGE_RATE = 15
       authorName: 'rgba(255,255,255,0.701961)',
       time: 'rgba(255,255,255,0.501961)',
       content: 'rgba(255,255,255,1)',
-      iconImg: 'https://cdn.discordapp.com/emojis/828907965951508480.png'
+      iconImg: 'https://cdn.discordapp.com/attachments/819260584620720162/861877971853901824/unknown.png'
     },
     pinTime: 60
   },
@@ -22,7 +22,7 @@ const EXCHANGE_RATE = 15
       authorName: 'rgba(255,255,255,0.701961)',
       time: 'rgba(255,255,255,0.501961)',
       content: 'rgba(255,255,255,1)',
-      iconImg: 'https://cdn.discordapp.com/emojis/806046341846401024.png'
+      iconImg: 'https://cdn.discordapp.com/attachments/819260584620720162/861875754404151296/unknown.png'
     },
     pinTime: 30
   },
@@ -35,7 +35,7 @@ const EXCHANGE_RATE = 15
       authorName: 'rgba(255,255,255,0.701961)',
       time: 'rgba(255,255,255,0.501961)',
       content: 'rgba(255,255,255,0.87451)',
-      iconImg: 'https://cdn.discordapp.com/emojis/806074765881770005.png'
+      iconImg: 'https://cdn.discordapp.com/attachments/819260584620720162/861875982109769738/unknown.png'
     },
     pinTime: 10
   },
@@ -48,7 +48,7 @@ const EXCHANGE_RATE = 15
       authorName: 'rgba(0,0,0,0.541176)',
       time: 'rgba(0,0,0,0.501961)',
       content: 'rgba(0,0,0,0.87451)',
-      iconImg: 'https://cdn.discordapp.com/emojis/805591240921972758.png'
+      iconImg: 'https://cdn.discordapp.com/attachments/819260584620720162/861879753320562688/Honeyview_VVTT001.png'
     },
     pinTime: 5
   },
@@ -61,7 +61,7 @@ const EXCHANGE_RATE = 15
       authorName: 'rgba(0,0,0,0.541176)',
       time: 'rgba(0,0,0,0.501961)',
       content: 'rgba(0,0,0,1)',
-      iconImg: 'https://cdn.discordapp.com/emojis/805623841052295168.png'
+      iconImg: 'https://cdn.discordapp.com/attachments/819260584620720162/861879377654317076/unknown.png'
     },
     pinTime: 2
   },
@@ -74,7 +74,7 @@ const EXCHANGE_RATE = 15
       authorName: 'rgba(0,0,0,0.701961)',
       time: 'rgba(0,0,0,0.501961)',
       content: 'rgba(0,0,0,1)',
-      iconImg: 'https://cdn.discordapp.com/emojis/805591703879680001.png'
+      iconImg: 'https://cdn.discordapp.com/attachments/819260584620720162/861878570967629845/unknown.png'
     },
     pinTime: 0
   },
@@ -87,7 +87,7 @@ const EXCHANGE_RATE = 15
       authorName: 'rgba(255,255,255,0.701961)',
       time: 'rgba(255,255,255,0.501961)',
       content: 'rgba(255,255,255,1)',
-      iconImg: 'https://cdn.discordapp.com/emojis/805591672171790336.png'
+      iconImg: 'https://cdn.discordapp.com/attachments/819260584620720162/861871975239909396/791027489778303006.png'
     },
     pinTime: 0
   }

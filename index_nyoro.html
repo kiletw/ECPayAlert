@@ -256,6 +256,7 @@
 
         let authorName = yt.content.querySelector("#author-name");
         let purchaseAmount = yt.content.querySelector("#purchase-amount");
+        let content = yt.content.querySelector("#content");
         let message = yt.content.querySelector("#message");
         let renderer = yt.content.querySelector("yt-live-chat-paid-message-renderer");
         let imgIcon = yt.content.querySelector("img-shadow");
@@ -267,7 +268,10 @@
         authorName.textContent = name;
         purchaseAmount.textContent = formatter.format(amount);
         message.textContent = msg;
-  
+        if (msg.length == 0) {
+            content.style = 'display:none;';
+        }
+        
 
 
         let colorConfig = getPriceConfig(amount);
