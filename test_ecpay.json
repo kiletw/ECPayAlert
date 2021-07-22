@@ -1,42 +1,42 @@
 [{
-	"donateid": "7",
-	"name": "抖內測試機7",
+	"donateid": "ec7",
+	"name": "綠界抖內測試機7",
 	"amount": 1500,
 	"msg": "這是一筆贊助測試～"
 },
 {
-	"donateid": "6",
-	"name": "抖內測試機6",
+	"donateid": "ec6",
+	"name": "綠界抖內測試機6",
 	"amount": 750,
 	"msg": "這是抖內測試機這是抖內測試機這是抖內測試機這是抖內測試機"
 },
 {
-	"donateid": "5",
-	"name": "抖內測試機5",
+	"donateid": "ec5",
+	"name": "綠界抖內測試機5",
 	"amount": 300,
 	"msg": "抖內測試 抖內測試\r\n樂奈我愛妳~抖內測試 抖內測試\r\n"
 },
 {
-	"donateid": "4",
-	"name": "抖內測試機4",
+	"donateid": "ec4",
+	"name": "綠界抖內測試機4",
 	"amount": 150,
 	"msg": "156456456456456456456456"
 },
 {
-	"donateid": "3",
-	"name": "抖內測試機3",
+	"donateid": "ec3",
+	"name": "綠界抖內測試機3",
 	"amount": 75,
 	"msg": "TESSETETSETSETSETSETSETSE"
 },
 {
-	"donateid": "2",
-	"name": "抖內測試機2",
+	"donateid": "ec2",
+	"name": "綠界抖內測試機2",
 	"amount": 30,
 	"msg": "這是抖內測試機這是抖內測試機這是抖內測試機這是抖內測試機這是抖內測試機這是抖內測試機"
 },
 {
-	"donateid": "1",
-	"name": "抖內測試機1",
+	"donateid": "ec1",
+	"name": "綠界抖內測試機1",
 	"amount": 15,
 	"msg": ""
 }]

@@ -93,6 +93,9 @@
     var mainSound;
     var isSoundPlaying;
     var webVersion = '';
+    var useECPAY = true;
+    var useOPAY = true;
+
     const checkVersionInterval = 60000;
     var urlParams = new URLSearchParams(window.location.search);
     const directionEnable = urlParams.has("direction");
@@ -103,7 +106,12 @@
 
         if (settings.AlertSound.length == 0) {
             setTimeout(checkVersion, 1000);
-            setTimeout(checkDonate, 1000);
+            if (useECPAY) {
+                setTimeout(checkDonateECPAY, 1000);
+            }
+            if (useOPAY) {
+                setTimeout(checkDonateOPAY, 1000);
+            }
             setTimeout(doAlert, 2000);
 
         } else {
@@ -115,7 +123,12 @@
                             volume: settings.AlertSoundVolume
                         });
                     }
-                    setTimeout(checkDonate, 1000);
+                    if (useECPAY) {
+                        setTimeout(checkDonateECPAY, 1000);
+                    }
+                    if (useOPAY) {
+                        setTimeout(checkDonateOPAY, 1000);
+                    }
                     setTimeout(doAlert, 1000);
                 }
             });
@@ -136,8 +149,7 @@
             success: function (resp) {
                 if (webVersion == '') {
                     webVersion = resp.version;
-                }
-                else if (webVersion != resp.version) {
+                } else if (webVersion != resp.version) {
                     location = location;
                     return
                 }
@@ -157,16 +169,19 @@
 
     }
 
-    function checkDonate() {
+
+
+    function checkDonateECPAY() {
 
         var method = '';
         var url = ''
         if (urlParams.has('debug') == 1) {
             method = 'GET';
-            url = 'test.json';
+            url = 'test_ecpay.json';
         } else {
             method = 'POST';
-            url = 'https://ecpay-proxy.herokuapp.com/https://payment.ecpay.com.tw/Broadcaster/CheckDonate/B1EB3236C8BB5FB1D7375E52732CF4DC';
+            url =
+                'https://ecpay-proxy.herokuapp.com/https://payment.ecpay.com.tw/Broadcaster/CheckDonate/B1EB3236C8BB5FB1D7375E52732CF4DC';
         }
 
 
@@ -216,7 +231,7 @@
                         }
                     }
                 }
-                setTimeout(checkDonate, checkDonateInterval);
+                setTimeout(checkDonateECPAY, checkDonateInterval);
             },
             error: function (XMLHttpRequest, textStatus) {
                 this.tryCount++;
@@ -231,6 +246,84 @@
         });
     }
 
+
+    function checkDonateOPAY() {
+
+        var method = '';
+        var url = ''
+        if (urlParams.has('debug') == 1) {
+            method = 'GET';
+            url = 'test_opay.json';
+        } else {
+            method = 'POST';
+            url =
+                'https://ecpay-proxy.herokuapp.com/https://payment.opay.tw/Broadcaster/CheckDonate/C181C56DF903929F87430855C36A0260';
+        }
+
+        $.ajax({
+            type: method,
+            url: url,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            cache: false,
+            tryCount: 0,
+            retryLimit: 3,
+            success: function (resp) {
+                if (queue) {
+                    console.log(resp);
+                    for (var i = 0; i < resp.lstDonate.length; i++) {
+                        console.log(resp.lstDonate.length);
+                        var exist = false;
+                        if (queueDonateID) {
+                            for (var j = 0; j < queueDonateID.length; j++) {
+                                if (queueDonateID[j] == resp.lstDonate[i].donateid) {
+                                    exist = true;
+                                    break;
+                                }
+                            }
+                        } else {
+                            queueDonateID = new Array();
+                        }
+
+                        if (!exist) {
+                            queue.push(resp.lstDonate[i]);
+                            queueDonateID.push(resp.lstDonate[i].donateid);
+                        }
+                    }
+                } else {
+                    queue = resp.lstDonate;
+
+                    if (!queueDonateID) {
+                        queueDonateID = new Array();
+                        for (var i = 0; i < queue.length; i++) {
+                            queueDonateID.push(queue[i].donateid);
+                        }
+                    } else {
+                        for (var i = 0; i < queue.length; i++) {
+                            for (var j = 0; j < queueDonateID.length; j++) {
+                                if (queueDonateID[j] == queue[i].donateid) {
+                                    queue.splice(i, 1);
+                                }
+                            }
+                        }
+                    }
+                }
+                setTimeout(checkDonateOPAY, checkDonateInterval);
+            },
+            error: function (XMLHttpRequest, textStatus) {
+                this.tryCount++;
+                if (this.tryCount <= this.retryLimit) {
+                    //try again
+                    $.ajax(this);
+                    return;
+                }
+                return;
+            },
+            timeout: 3000
+        });
+    }
+
+
     function doAlert() {
         if (queue != null && queue.length > 0 && !isSoundPlaying) {
             showAlert(queue[0]);
@@ -241,12 +334,13 @@
 
     function showAlert(data) {
         let msgTemplate = settings.MsgTemplate;
+        console.log(data);
         let name = data.name ? data.name : "";
         let amount = data.amount;
         let msg = data.msg ? data.msg : "";
         let donateId = data.donateid ? data.donateid : 0;
         let alertMsg = msgTemplate
-        if($('[data-donate-id="' + donateId + '"]').length > 0){
+        if ($('[data-donate-id="' + donateId + '"]').length > 0) {
             queue.shift();
             setTimeout(doAlert, 1000);
             return
@@ -270,8 +364,10 @@
         message.textContent = msg;
         if (msg.length == 0) {
             content.style = 'display:none;';
+        } else {
+            content.style = '';
         }
-        
+
 
 
         let colorConfig = getPriceConfig(amount);
@@ -320,7 +416,9 @@
             }
             if (direction != '') {
                 $('[data-donate-id="' + donateId + '"]').hide();
-                $('[data-donate-id="' + donateId + '"]').show("slide", { direction: direction }, 500);
+                $('[data-donate-id="' + donateId + '"]').show("slide", {
+                    direction: direction
+                }, 500);
             }
         }
         queue.shift();
