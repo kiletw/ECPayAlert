@@ -272,7 +272,6 @@
             success: function (resp) {
                 if (queue) {
                     for (var i = 0; i < resp.lstDonate.length; i++) {
-                        console.log(resp.lstDonate.length);
                         var exist = false;
                         if (queueDonateID) {
                             for (var j = 0; j < queueDonateID.length; j++) {
@@ -334,7 +333,6 @@
 
     function showAlert(data) {
         let msgTemplate = settings.MsgTemplate;
-        console.log(data);
         let name = data.name ? data.name : "";
         let amount = data.amount;
         let msg = data.msg ? data.msg : "";
@@ -431,7 +429,9 @@
     function emojiChange(text){
         for(let i = 0;i<EMOJI[0].commands.length;i++){
             let imgIcon = '<img src="'+ EMOJI[0].srcs[i]+'"></img>';
-            text = text.replaceAll(EMOJI[0].commands[i],imgIcon);
+            let replace = EMOJI[0].commands[i];
+            let re = new RegExp(replace,"g");
+            text = text.replace(re,imgIcon);
         }
         return text;
     }
