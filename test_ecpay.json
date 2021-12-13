@@ -1,4 +1,9 @@
 [{
+	"donateid": "ec8",
+	"name": "綠界抖內圖形測試",
+	"amount": 1500,
+	"msg": ":_meat::_meat::_meat::_meat::_meat::_meat::_meat::_meat::_meat:"
+},{
 	"donateid": "ec7",
 	"name": "綠界抖內測試機7",
 	"amount": 1500,
@@ -14,7 +19,7 @@
 	"donateid": "ec5",
 	"name": "綠界抖內測試機5",
 	"amount": 300,
-	"msg": "抖內測試 抖內測試\r\n樂奈我愛妳~抖內測試 抖內測試\r\n"
+	"msg": "抖內測試 抖內測試\r\n"
 },
 {
 	"donateid": "ec4",

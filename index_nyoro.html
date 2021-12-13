@@ -15,6 +15,7 @@
 <script src="Scripts/soundmanager2-nodebug-jsmin.js" type="text/javascript"></script>
 
 <script src="Scripts/constants_nyoro.js" type="text/javascript"></script>
+<script src="Scripts/emoji_nyoro.js" type="text/javascript"></script>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style type="text/css">
     body {
@@ -360,7 +361,10 @@
         });
         authorName.textContent = name;
         purchaseAmount.textContent = formatter.format(amount);
-        message.textContent = msg;
+
+        
+        message.textContent  = msg;
+        message.innerHTML  = emojiChange(message.textContent);
         if (msg.length == 0) {
             content.style = 'display:none;';
         } else {
@@ -423,7 +427,6 @@
         queue.shift();
         setTimeout(doAlert, 1000);
     }
-
 
     function clearQueueDonateID() {
         queueDonateID = null;

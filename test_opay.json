@@ -1,6 +1,12 @@
 {
 	"lstDonate": [
 		{
+			"donateid": "o9",
+			"name": "歐付寶抖內圖形測試",
+			"amount": 1500,
+			"msg": ":_meat::_meat::_QQmanto::_meat::_eat::_meat::_meat::_meat::_meat:"
+		},
+		{
 			"donateid": "o7",
 			"name": "歐付寶抖內測試機7",
 			"amount": 1500,
@@ -16,7 +22,7 @@
 			"donateid": "o5",
 			"name": "歐付寶抖內測試機5",
 			"amount": 300,
-			"msg": "抖內測試 抖內測試\r\n樂奈我愛妳~抖內測試 抖內測試\r\n"
+			"msg": "抖內測試 抖內測試\r\n"
 		},
 		{
 			"donateid": "o4",
