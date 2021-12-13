@@ -428,6 +428,14 @@
         setTimeout(doAlert, 1000);
     }
 
+    function emojiChange(text){
+        for(let i = 0;i<EMOJI[0].commands.length;i++){
+            let imgIcon = '<img src="'+ EMOJI[0].srcs[i]+'"></img>';
+            text = text.replaceAll(EMOJI[0].commands[i],imgIcon);
+        }
+        return text;
+    }
+
     function clearQueueDonateID() {
         queueDonateID = null;
         setTimeout(clearQueueDonateID, clearQueueInterval);
