@@ -15,6 +15,7 @@
 <script src="Scripts/soundmanager2-nodebug-jsmin.js" type="text/javascript"></script>
 
 <script src="Scripts/constants_nyoro.js" type="text/javascript"></script>
+<script src="Scripts/emoji_nyoro.js" type="text/javascript"></script>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style type="text/css">
     body {
@@ -271,7 +272,6 @@
             success: function (resp) {
                 if (queue) {
                     for (var i = 0; i < resp.lstDonate.length; i++) {
-                        console.log(resp.lstDonate.length);
                         var exist = false;
                         if (queueDonateID) {
                             for (var j = 0; j < queueDonateID.length; j++) {
@@ -333,7 +333,6 @@
 
     function showAlert(data) {
         let msgTemplate = settings.MsgTemplate;
-        console.log(data);
         let name = data.name ? data.name : "";
         let amount = data.amount;
         let msg = data.msg ? data.msg : "";
@@ -360,7 +359,10 @@
         });
         authorName.textContent = name;
         purchaseAmount.textContent = formatter.format(amount);
-        message.textContent = msg;
+
+        
+        message.textContent  = msg;
+        message.innerHTML  = emojiChange(message.textContent);
         if (msg.length == 0) {
             content.style = 'display:none;';
         } else {
@@ -424,6 +426,15 @@
         setTimeout(doAlert, 1000);
     }
 
+    function emojiChange(text){
+        for(let i = 0;i<EMOJI[0].commands.length;i++){
+            let imgIcon = '<img src="'+ EMOJI[0].srcs[i]+'"></img>';
+            let replace = EMOJI[0].commands[i];
+            let re = new RegExp(replace,"g");
+            text = text.replace(re,imgIcon);
+        }
+        return text;
+    }
 
     function clearQueueDonateID() {
         queueDonateID = null;
