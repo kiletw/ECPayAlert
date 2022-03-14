@@ -22,7 +22,7 @@ const EXCHANGE_RATE = 15
       authorName: 'rgba(255,255,255,0.701961)',
       time: 'rgba(255,255,255,0.501961)',
       content: 'rgba(255,255,255,1)',
-      iconImg: 'https://cdn.discordapp.com/attachments/819260584620720162/861875754404151296/unknown.png'
+      iconImg: 'https://media.discordapp.net/attachments/819260584620720162/952963803711148072/icon.png'
     },
     pinTime: 30
   },
@@ -48,7 +48,7 @@ const EXCHANGE_RATE = 15
       authorName: 'rgba(0,0,0,0.541176)',
       time: 'rgba(0,0,0,0.501961)',
       content: 'rgba(0,0,0,0.87451)',
-      iconImg: 'https://cdn.discordapp.com/attachments/819260584620720162/861879753320562688/Honeyview_VVTT001.png'
+      iconImg: 'https://cdn.discordapp.com/attachments/819260584620720162/952975766944092270/icon.jpg'
     },
     pinTime: 5
   },
@@ -74,7 +74,7 @@ const EXCHANGE_RATE = 15
       authorName: 'rgba(0,0,0,0.701961)',
       time: 'rgba(0,0,0,0.501961)',
       content: 'rgba(0,0,0,1)',
-      iconImg: 'https://cdn.discordapp.com/attachments/819260584620720162/861878570967629845/unknown.png'
+      iconImg: 'https://cdn.discordapp.com/attachments/819260584620720162/952966347434885210/Honeyview_sad_icon.png'
     },
     pinTime: 0
   },
