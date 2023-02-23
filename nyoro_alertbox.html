@@ -401,7 +401,7 @@
                             onfinish: function () {
                                 if (msg.length != 0 && settings.TTSStatus != 0) {
                                     soundManager.createSound({
-                                        url: "'https://payalertproxy.onrender.com/http://23.142.24.79:99/TTS?context="+ encodeURIComponent(msg)+"&voiceType=" + voiceType,
+                                        url: "https://payalertproxy.onrender.com/http://23.142.24.79:99/TTS?context="+ encodeURIComponent(msg)+"&voiceType=" + voiceType,
                                         volume: settings.TTSVolume
                                     }).play({
                                         onfinish: function () {
@@ -415,7 +415,7 @@
                     } else if (msg.length != 0 && settings.TTSStatus != 0) {
                         isSoundPlaying = true;
                         soundManager.createSound({
-                            url: "'https://payalertproxy.onrender.com/http://23.142.24.79:99/TTS?context="+encodeURIComponent(msg)+"&voiceType=" + voiceType,
+                            url: "https://payalertproxy.onrender.com/http://23.142.24.79:99/TTS?context="+encodeURIComponent(msg)+"&voiceType=" + voiceType,
                             volume: settings.TTSVolume
                         }).play({
                             onfinish: function () {
