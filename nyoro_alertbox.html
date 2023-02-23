@@ -130,7 +130,6 @@
 
     }
 
-
     function checkDonateECPAY() {
 
         var method = '';
@@ -139,85 +138,9 @@
             method = 'GET';
             url = 'test_ecpay.json';
         } else {
-            method = 'POST';
-            url =
-                'https://payalertproxy.onrender.com/https://payment.ecpay.com.tw/Broadcaster/CheckDonate/B1EB3236C8BB5FB1D7375E52732CF4DC';
-        }
-
-
-        $.ajax({
-            type: method,
-            url: url,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            cache: false,
-            tryCount: 0,
-            retryLimit: 3,
-            success: function (resp) {
-                if (queue) {
-                    for (var i = 0; i < resp.length; i++) {
-                        var exist = false;
-                        if (queueDonateID) {
-                            for (var j = 0; j < queueDonateID.length; j++) {
-                                if (queueDonateID[j] == resp[i].donateid) {
-                                    exist = true;
-                                    break;
-                                }
-                            }
-                        } else {
-                            queueDonateID = new Array();
-                        }
-
-                        if (!exist) {
-                            queue.push(resp[i]);
-                            queueDonateID.push(resp[i].donateid);
-                        }
-                    }
-                } else {
-                    queue = resp;
-
-                    if (!queueDonateID) {
-                        queueDonateID = new Array();
-                        for (var i = 0; i < queue.length; i++) {
-                            queueDonateID.push(queue[i].donateid);
-                        }
-                    } else {
-                        for (var i = 0; i < queue.length; i++) {
-                            for (var j = 0; j < queueDonateID.length; j++) {
-                                if (queueDonateID[j] == queue[i].donateid) {
-                                    queue.splice(i, 1);
-                                }
-                            }
-                        }
-                    }
-                }
-                setTimeout(checkDonateECPAY, checkDonateInterval);
-            },
-            error: function (XMLHttpRequest, textStatus) {
-                this.tryCount++;
-                if (this.tryCount <= this.retryLimit) {
-                    //try again
-                    $.ajax(this);
-                    return;
-                }
-                return;
-            },
-            timeout: 3000
-        });
-    }
-
-
-    function checkDonateECPAY() {
-
-        var method = '';
-        var url = ''
-        if (urlParams.has('debug') == 1) {
             method = 'GET';
-            url = 'test_ecpay.json';
-        } else {
-            method = 'POST';
             url =
-                'https://payalertproxy.onrender.com/https://payment.ecpay.com.tw/Broadcaster/CheckDonate/B1EB3236C8BB5FB1D7375E52732CF4DC';
+                'https://donatealerts.ddns.net/ECPay?id=B1EB3236C8BB5FB1D7375E52732CF4DC';
         }
 
 
@@ -293,7 +216,7 @@
         } else {
             method = 'GET';
             url =
-                'https://payalertproxy.onrender.com/http://23.142.24.79:99/OPay?id=C181C56DF903929F87430855C36A0260';
+                'https://donatealerts.ddns.net/OPay?id=C181C56DF903929F87430855C36A0260';
         }
 
         $.ajax({
@@ -401,7 +324,7 @@
                             onfinish: function () {
                                 if (msg.length != 0 && settings.TTSStatus != 0) {
                                     soundManager.createSound({
-                                        url: "https://payalertproxy.onrender.com/http://23.142.24.79:99/TTS?context="+ encodeURIComponent(msg)+"&voiceType=" + voiceType,
+                                        url: "https://donatealerts.ddns.net/TTS?context="+ encodeURIComponent(msg)+"&voiceType=" + voiceType,
                                         volume: settings.TTSVolume
                                     }).play({
                                         onfinish: function () {
@@ -415,7 +338,7 @@
                     } else if (msg.length != 0 && settings.TTSStatus != 0) {
                         isSoundPlaying = true;
                         soundManager.createSound({
-                            url: "https://payalertproxy.onrender.com/http://23.142.24.79:99/TTS?context="+encodeURIComponent(msg)+"&voiceType=" + voiceType,
+                            url: "https://donatealerts.ddns.net/TTS?context="+encodeURIComponent(msg)+"&voiceType=" + voiceType,
                             volume: settings.TTSVolume
                         }).play({
                             onfinish: function () {
